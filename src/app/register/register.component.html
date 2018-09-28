@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-6">
+      <h3>Registration</h3>
+      <div class="text-danger" *ngIf="submitted && regForm.invalid && (regForm.dirty || regForm.touched)">
+        <div *ngIf="emailAddress.errors">
+          <div *ngIf="emailAddress.errors.required">
+            * Email address is required.
+          </div>
+          <div *ngIf="emailAddress.errors.email">
+            * Invalid email address.
+          </div>
+        </div>
+        <div *ngIf="password.errors">
+          <div *ngIf="password.errors.required">
+            * Password is required.
+          </div>
+          <div *ngIf="password.errors.pattern">
+            * Password must be 8 character long with at least one character and one special character.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-6">
+      <form [formGroup]="regForm" (submit)="onSubmit()">
+        <div class="form-group">
+          <label for="emailAddress">Email address</label>
+          <input type="email" formControlName="emailAddress" class="form-control" id="emailAddress" placeholder="Enter email">
+          <div *ngIf="emailAddress.invalid && (emailAddress.dirty || emailAddress.touched)"
+               class="text-danger">
+            <div *ngIf="emailAddress.errors.required">
+              * Email address is required.
+            </div>
+            <div *ngIf="emailAddress.errors.email">
+              * Invalid email address.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subscribe">Subscribe</label>
+          <select class="form-control" formControlName="subscribe" id="subscribe">
+            <option *ngFor="let sub of subscriptions" [value]="sub">{{sub}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password" maxlength="8">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"
+               class="text-danger">
+            <div *ngIf="password.errors.required">
+              * Password is required.
+            </div>
+            <!--<div *ngIf="password.errors.minlength">
+              * Password must be at least 4 characters long.
+            </div>-->
+            <div *ngIf="password.errors.pattern">
+              * Password must be 8 character long with at least one character and one special character.
+            </div>
+          </div>
+        </div>
+        <div *ngIf="areYouSure">Are you sure to discard the changes?<button type="button" class="btn ml-1 mr-1" (click)="onYes()">Yes</button><button type="button" class="btn" (click)="onNo()">No</button></div>
+        <button type="submit" class="btn btn-primary mr-3">Submit</button>
+        <button type="button" (click)="onReset()" class="btn">Clear</button>
+      </form>
+    </div>
+  </div>
+</div>
