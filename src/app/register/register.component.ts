@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
+import {UserLabel} from '../labels/user.labels';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   public regForm: FormGroup;
+  public label = UserLabel;
   public subscriptions: Array<string> = ['Basic', 'Advanced', 'Pro'];
   public submitted = false;
   public areYouSure = false;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../service/user.service';
 import {User} from '../interface/user';
 import {Router} from '@angular/router';
+import {UserLabel} from '../labels/user.labels';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +10,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  user: User;
+  public user: User;
+  public label = UserLabel;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
