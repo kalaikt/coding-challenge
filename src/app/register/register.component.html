@@ -61,8 +61,8 @@
           </div>
         </div>
         <div *ngIf="areYouSure">Are you sure to discard the changes?<button type="button" class="btn ml-1 mr-1" (click)="onYes()">Yes</button><button type="button" class="btn" (click)="onNo()">No</button></div>
-        <button type="submit" class="btn btn-primary mr-3">Submit</button>
-        <button type="button" (click)="onReset()" class="btn">Clear</button>
+        <button type="submit" class="btn btn-primary mr-3" [disabled]="areYouSure">Submit</button>
+        <button type="button" (click)="onReset()" class="btn" [disabled]="areYouSure">Clear</button>
       </form>
     </div>
   </div>
